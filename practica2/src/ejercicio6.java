@@ -30,6 +30,6 @@ public class ejercicio6 {
         System.out.println("Negativos: " + negativos);
         System.out.println("Ceros: " + ceros);
 
-        sc.close();
+
     }
 }
