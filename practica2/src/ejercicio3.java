@@ -26,8 +26,7 @@ public class ejercicio3 {
         //Mostrar el número más pequeño
         System.out.println("el numero mas pequeño es :" + menor);
         
-        
-        
+
     }
     
 }
