@@ -39,6 +39,6 @@ public class ejercicio7 {
             System.out.println("No se han introducido valores negativos.");
         }
 
-        sc.close();
+
     }
 }
