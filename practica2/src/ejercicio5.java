@@ -17,7 +17,7 @@ public class ejercicio5 {
             System.out.println("Posición " + i + ": " + array[i]);
             suma += array[i];
         }
-
+        //Imprimimos por pantalla
         System.out.println("\nLa suma de todos los valores es: " + suma);
 
     }
