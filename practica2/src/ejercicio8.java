@@ -43,6 +43,7 @@ public class ejercicio8 {
         System.out.println("Personas con altura superior a la media: " + superiores);
         System.out.println("Personas con altura inferior a la media: " + inferiores);
 
+
     }
 }
 
