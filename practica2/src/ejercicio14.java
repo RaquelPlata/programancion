@@ -13,7 +13,7 @@ public class ejercicio14 {
             if (nombre.equalsIgnoreCase("fin")) {
                 break;
             }
-            nombres.add(nombre);
+            nombres.add(nombre);//Añadir nombres a la lista
         }
 
         // Pedir nombre a buscar
