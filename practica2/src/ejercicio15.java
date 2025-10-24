@@ -8,33 +8,76 @@ import java.util.Scanner;
 
 public class ejercicio15 {
 
-    public static void main(String[] args){
-        //Primero definimos la Clase Scanner y el Array list con la que vamos a trabajar los números
+    public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         ArrayList<Integer> lista = new ArrayList<>();
 
-        //con este bucle metemos los números introducidos por pantalla en la lista
-        for (int i = 0; i <= 9; i++) {
-            System.out.println("Dime un número por pantalla:");
+        // Pedir 10 números por pantalla
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Introduce un número: ");
             int num = s.nextInt();
             lista.add(num);
         }
-        //con este bucle anidado vamos recorriendo los elementos de la lista comparando si son iguales que los posteriores
-        //si encuentra alguno entonces elimina el elemento de la lista y retrocede un índice para seguir recorriendo la lista sin pasarse del índice
-        for (int k = 0; k < lista.size(); k++) {
-            for (int l = 1; l < lista.size(); l++) {
-                if (lista.get(k).equals(lista.get(l)) && k != l){
-                    lista.remove(l);
-                    l--;
+
+        // Crear una nueva lista sin duplicados
+        ArrayList<Integer> sinDuplicados = new ArrayList<>();
+
+        // Recorremos lista original
+        for (Integer num : lista) {
+            boolean repetido = false;
+
+            // Comprobamos manualmente si ya está en sinDuplicados
+            for (Integer otro : sinDuplicados) {
+                if (num.equals(otro)) {
+                    repetido = true;
+                    break;
+                }
+            }
+
+            // Si no está repetido, lo añadimos
+            if (!repetido) {
+                sinDuplicados.add(num);
+            }
+        }
+
+        // Ordenar manualmente (algoritmo de burbuja)
+        for (int i = 0; i < sinDuplicados.size() - 1; i++) {
+            for (int j = 0; j < sinDuplicados.size() - 1 - i; j++) {
+
+                // Comparar usando el for-each no se puede, necesitamos índices aquí
+                // pero sin get(): usamos un array temporal para poder comparar
+                int a = 0;
+                int b = 0;
+                int pos = 0;
+
+                // Obtener los valores manualmente (sin get)
+                for (Integer valor : sinDuplicados) {
+                    if (pos == j) a = valor;
+                    if (pos == j + 1) b = valor;
+                    pos++;
+                }
+
+                // Si están en orden incorrecto, intercambiamos
+                if (a > b) {
+                    // Intercambio manual sin get ni set
+                    ArrayList<Integer> temp = new ArrayList<>();
+                    int index = 0;
+                    for (Integer valor : sinDuplicados) {
+                        if (index == j) temp.add(b);
+                        else if (index == j + 1) temp.add(a);
+                        else temp.add(valor);
+                        index++;
+                    }
+                    sinDuplicados = temp;
                 }
             }
         }
-        //con el metodo .sort() le pasamos el parametro null que es para dejar el comparador al orden natural (menor a mayor)
-        lista.sort(null);
-        //mostramos la lista por pantalla
-        System.out.println(lista);
+
+        // Mostrar lista final ordenada y sin duplicados
+        System.out.println("Lista sin duplicados y ordenada:");
+        for (Integer n : sinDuplicados) {
+            System.out.print(n + " ");
+        }
     }
 }
-
-
 
