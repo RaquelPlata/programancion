@@ -6,27 +6,34 @@ public class ejercicio14 {
         Scanner sc = new Scanner(System.in);
         ArrayList<String> nombres = new ArrayList<>();
 
-        // Pedir nombres al usuario
         System.out.println("Introduce nombres (escribe 'fin' para terminar):");
         while (true) {
             String nombre = sc.nextLine();
             if (nombre.equalsIgnoreCase("fin")) {
                 break;
             }
-            nombres.add(nombre);//Añadir nombres a la lista
+            nombres.add(nombre);
         }
 
-        // Pedir nombre a buscar
         System.out.print("Introduce un nombre para buscar: ");
         String nombreBuscado = sc.nextLine();
 
-        // Comprobar si está en la lista
-        if (nombres.contains(nombreBuscado)) {
-            int posicion = nombres.indexOf(nombreBuscado) + 1; //sumamos 1
-            System.out.println("El nombre '" + nombreBuscado + "' está en la lista, en la posición " + posicion + ".");
+        // Buscar posicion en el indice
+        int posicion = -1;
+        int indice = 0;
+
+        for (String nombre : nombres) {
+            if (nombre.equalsIgnoreCase(nombreBuscado)) {
+                posicion = indice;
+                break;
+            }
+            indice++;
+        }
+
+        if (posicion != -1) {
+            System.out.println("El nombre '" + nombreBuscado + "' está en la lista, en la posición " + (posicion + 1) + ".");
         } else {
             System.out.println("El nombre '" + nombreBuscado + "' no está en la lista.");
         }
-
     }
 }
