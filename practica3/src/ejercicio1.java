@@ -29,7 +29,7 @@ public class ejercicio1  {
         int columnas = doub[0].length;
 
         //  Creamos una cadena llamada 'separador' para dibujar las líneas horizontales
-        //    El método .repeat() repite el patrón tantas veces como columnas haya + 1
+        //    El metodo repeat repite la secuencia tantas veces como columnas haya
 
         String separador = "+" + "------------+".repeat(columnas + 1);
 
