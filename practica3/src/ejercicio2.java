@@ -64,6 +64,6 @@ public class ejercicio2 {
         System.out.println();
         System.out.println(separador);
 
-        sc.close();
+
     }
 }
