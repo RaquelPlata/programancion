@@ -1,5 +1,9 @@
-public class ejercicio1 {
+public class ejercicio1  {
     public static void main(String[] args) {
+
+
+        //  Declaración y asignación del arreglo 'doub' de tipo double
+        //    Este arreglo tiene 3 filas y 6 columnas con valores numéricos.
 
         double[][] doub = {
                 {0.0, 30.0, 2.0, 0.0, 0.0, 5.0},
@@ -7,51 +11,71 @@ public class ejercicio1 {
                 {0.0, 0.0, -2.0, 9.0, 0.0, 11.0}
         };
 
+
+        // Declaración del arreglo booleano 'vacio' (mismo tamaño que 'doub')
+        // Indica qué posiciones deben mostrarse vacías al imprimir la tabla:
+        // true  -> la celda se deja en blanco
+        // false -> se muestra el valor correspondiente de 'doub'
+
         boolean[][] vacio = {
-                {false, false, false, true, true, false},
-                {false, true,  true,  true, false, true},
-                {true,  true,  false, false, true, false}
+                {false, false, false, true,  true,  false},
+                {false, true,  true,  true,  false, true},
+                {true,  true,  false, false, true,  false}
         };
 
+
+        //  Guardamos en una variable la cantidad de columnas que tiene el arreglo
+
         int columnas = doub[0].length;
-        int ancho = 12; // ancho de cada celda
 
-        // Imprimir línea horizontal
-        imprimirLinea(columnas, ancho);
+        //  Creamos una cadena llamada 'separador' para dibujar las líneas horizontales
+        //    El método .repeat() repite el patrón tantas veces como columnas haya + 1
 
-        // Encabezado
-        System.out.print("|" + centraTexto("Array num", ancho));
-        for (int j = 0; j < columnas; j++) {
-            System.out.print("|" + centraTexto("Columna " + j, ancho));
+        String separador = "+" + "------------+".repeat(columnas + 1);
+
+
+        //  Imprimimos el encabezado de la tabla con los nombres de las columnas
+
+        System.out.println(separador); // Línea superior
+        System.out.printf("| %-10s |", "Array num"); // Primera celda del encabezado
+
+        // Imprimimos los títulos de las columnas: "Columna 0", "Columna 1", etc.
+        for (int col = 0; col < columnas; col++) {
+            System.out.printf(" Columna %-2d |", col);
         }
-        System.out.println("|");
-        imprimirLinea(columnas, ancho);
+        System.out.println();           // Salto de línea
+        System.out.println(separador);  // Línea divisoria debajo del encabezado
 
-        // Filas
-        for (int i = 0; i < doub.length; i++) {
-            System.out.print("|" + centraTexto("Fila " + i, ancho));
-            for (int j = 0; j < columnas; j++) {
-                String valor = vacio[i][j] ? "" : String.valueOf((int)doub[i][j]);
-                System.out.print("|" + centraTexto(valor, ancho));
+
+        //  Imprimimos el contenido de cada fila del arreglo
+
+        for (int fila = 0; fila < doub.length; fila++) {
+
+            // Mostramos el nombre de la fila: "Fila 0", "Fila 1", etc.
+            System.out.printf("| %-10s |", "Fila " + fila);
+
+            // Recorremos todas las columnas dentro de la fila actual
+            for (int col = 0; col < columnas; col++) {
+
+                // Si en la posición correspondiente de 'vacio' hay true,
+                // imprimimos una celda vacía
+                if (vacio[fila][col]) {
+                    System.out.printf(" %-10s |", " ");
+                }
+                // Si hay false, mostramos el valor numérico de 'doub' con 2 decimales
+                else {
+                    System.out.printf(" %-10.2f |", doub[fila][col]);
+                }
             }
-            System.out.println("|");
-            imprimirLinea(columnas, ancho);
-        }
-    }
 
-    // Función para centrar texto
-    public static String centraTexto(String texto, int ancho) {
-        int espacios = ancho - texto.length();
-        int izquierda = espacios / 2;
-        int derecha = espacios - izquierda;
-        return " ".repeat(izquierda) + texto + " ".repeat(derecha);
-    }
-
-    // Función para imprimir línea horizontal completa
-    public static void imprimirLinea(int columnas, int ancho) {
-        for (int i = 0; i <= columnas; i++) {
-            System.out.print("+" + "-".repeat(ancho));
+            // Terminamos la fila actual y dibujamos una línea separadora
+            System.out.println();
+            System.out.println(separador);
         }
-        System.out.println("+");
+
+
+        //  Fin del programa
+
     }
 }
+
