@@ -6,9 +6,9 @@ public class ejercicio1  {
         //    Este arreglo tiene 3 filas y 6 columnas con valores numéricos.
 
         double[][] doub = {
-                {0.0, 30.0, 2.0, 0.0, 0.0, 5.0},
-                {75.0, 0.0, 0.0, 0.0, 0.0, 0.0},
-                {0.0, 0.0, -2.0, 9.0, 0.0, 11.0}
+                {0, 30, 2, 0, 0, 5},
+                {75, 0, 0, 0,0, 0},
+                {0, 0, -2, 9, 0, 11.}
         };
 
 
