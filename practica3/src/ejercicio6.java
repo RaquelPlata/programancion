@@ -1,52 +1,47 @@
 import java.util.Random;
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class ejercicio6 {
     public static void main(String[] args) {
         Random rand = new Random();
 
-        // Tamaño ajustado: 3x7 = 21 elementos (números únicos posibles entre 20 y 40)
         int filas = 3;
         int columnas = 7;
-
         int[][] numeros = new int[filas][columnas];
         int[] sumaFilas = new int[filas];
         int[] sumaColumnas = new int[columnas];
         int sumaTotal = 0;
 
-        int max = Integer.MIN_VALUE;
-        int min = Integer.MAX_VALUE;
-        int filaMax = 0, colMax = 0;
-        int filaMin = 0, colMin = 0;
+        int rangoMin = 20;
+        int rangoMax = 40; // 21 números posibles (20..40)
 
-        // Crear lista con los números del 20 al 40
-        ArrayList<Integer> listaNumeros = new ArrayList<>();
-        for (int i = 20; i <= 40; i++) {
-            listaNumeros.add(i);
+        // Crear array con todos los números posibles
+        int totalNumeros = rangoMax - rangoMin + 1; // 21
+        int[] valores = new int[totalNumeros];
+
+        for (int i = 0; i < totalNumeros; i++) {
+            valores[i] = rangoMin + i;
         }
 
-        // Barajar la lista para que los números salgan en orden aleatorio
-        Collections.shuffle(listaNumeros);
+        // Mezclar los números manualmente (sin Collections.shuffle)
+        for (int i = 0; i < totalNumeros; i++) {
+            int j = rand.nextInt(totalNumeros);
+            int temp = valores[i];
+            valores[i] = valores[j];
+            valores[j] = temp;
+        }
 
-        // Rellenar la matriz con números únicos
-        int index = 0;
+        // Rellenar la matriz con los números ya mezclados (únicos)
+        int indice = 0;
+        int max = Integer.MIN_VALUE, min = Integer.MAX_VALUE;
+        int filaMax = 0, colMax = 0, filaMin = 0, colMin = 0;
+
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < columnas; j++) {
-                int valor = listaNumeros.get(index++);
+                int valor = valores[indice++];
                 numeros[i][j] = valor;
 
-                if (valor > max) {
-                    max = valor;
-                    filaMax = i;
-                    colMax = j;
-                }
-
-                if (valor < min) {
-                    min = valor;
-                    filaMin = i;
-                    colMin = j;
-                }
+                if (valor > max) { max = valor; filaMax = i; colMax = j; }
+                if (valor < min) { min = valor; filaMin = i; colMin = j; }
 
                 sumaFilas[i] += valor;
                 sumaColumnas[j] += valor;
@@ -54,11 +49,11 @@ public class ejercicio6 {
             }
         }
 
-        // Mostrar matriz con formato
-        System.out.println("\nMATRIZ DE NÚMEROS (3x7, sin repetidos, rango 20–40)");
+        // Mostrar tabla formateada
+        System.out.println("\nMATRIZ DE NÚMEROS ÚNICOS (3x7) — valores entre 20 y 40\n");
         String separador = "+" + "---------------+".repeat(columnas + 1);
-
         System.out.println(separador);
+
         for (int i = 0; i < filas; i++) {
             System.out.print("|");
             for (int j = 0; j < columnas; j++) {
@@ -69,7 +64,7 @@ public class ejercicio6 {
             System.out.println(separador);
         }
 
-        // Encabezado de columnas
+        // Encabezado sumas columnas
         System.out.print("|");
         for (int j = 0; j < columnas; j++) {
             System.out.printf(" Σ col %-6d |", j + 1);
@@ -78,7 +73,7 @@ public class ejercicio6 {
         System.out.println();
         System.out.println(separador);
 
-        // Valores de sumas por columna
+        // Mostrar sumas de columnas
         System.out.print("|");
         for (int j = 0; j < columnas; j++) {
             System.out.printf(" %12d |", sumaColumnas[j]);
