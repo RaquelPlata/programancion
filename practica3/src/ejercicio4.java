@@ -38,7 +38,7 @@ public class ejercicio4 {
                 System.out.printf(" %-17d|", numeros[i][j]);
             }
 
-            // Espera antes de mostrar suma de fila
+            // Esperar antes de mostrar suma de fila
             Thread.sleep(600);
             System.out.printf(" Σ fila %-2d = %-5d|", i + 1, sumaFila[i]);
             System.out.println("\n" + sep);
@@ -51,7 +51,7 @@ public class ejercicio4 {
             System.out.printf(" Σ col %-2d = %-6d|", j, maxColumna[j]);
         }
 
-        // Pequeño retraso antes del total
+        // Pequeña pausa antes del total
         Thread.sleep(1000);
         System.out.printf(" TOTAL = %-9d|", sumaTotal);
         System.out.println("\n" + sep);
