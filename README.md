@@ -1,7 +1,7 @@
 # programancion
 
 Estructura de la rama prctica2:
-
+```bash
 📁 programacion
 ├── 🌿 main
 │   ├── 📁 practica2
