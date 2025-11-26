@@ -18,15 +18,22 @@ public  class Main {
 
             private static void precargarDatos() {
                 Direccion d1 = new Direccion("Av España", 10, 28001, "Madrid", "Madrid");
+                Direccion d2 = new Direccion("Av España", 20, 28005, "Madrid", "Madrid");
                 Hospital h1 = new Hospital("Hospital Central", "CIF123", d1);
+                Hospital h2 = new Hospital("Hospital sur", "CIF321", d2);
                 Areas a1 = new Areas("Urgencias", "A1", 1, h1);
+                Areas a2 = new Areas("Pediatría", "A2", 2, h2);
                 h1.agregarAreas(a1);
                 hospitales.add(h1);
+                hospitales.add(h2);
                 areas.add(a1);
+                areas.add(a2);
 
 
-                Medico m1 = new Medico("Juan Perez", a1, "12345678A", 40, "M", 30000, 2020);
+                Medico m1 = new Medico("Juana", a1, "12345678A", 40, "Mujer", 30000, 2020);
+                Medico m2 = new Medico("Pepe", a2, "12345678A", 40, "Hombre", 40000, 2010);
                 medicos.add(m1);
+                medicos.add(m2);
 
 
                 Contrato c1 = new Contrato(2020, m1, h1);
