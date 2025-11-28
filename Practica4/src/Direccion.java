@@ -57,7 +57,8 @@ public class Direccion {
         this.provincia = provincia;
     }
 
-
+    // Devuelve la dirección completa como un String legible
+    // Formato: "Calle Nº, CP Localidad (Provincia)"
     public String toString() {
         return this.calle + " " + this.numero + ", " + this.codigopotal + this.localodad + " (" + this.provincia + ") ";
     }

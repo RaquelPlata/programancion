@@ -64,26 +64,43 @@ public class Hospital {
     }
 
     //PROPORCION DE MEDICOS
-    public double getroponcionMedicosArea(String idArea) {
-        Areas area = buscarArea(idArea);
-        if (area != null & getNumeroTotalMedicos() > 0) {
-            return (double) area.getNumMedicos() / getNumeroTotalMedicos();
-        }
-        return 0;
-    }
-            //EXISTE AREA POR ID
-            public boolean existeArea(String idArea) {
-                return buscarArea(idArea) != null;
+
+    public double getProporcionMedicosArea(String idArea) {
+
+        int totalMedicos = 0;
+        int medicosArea = 0;
+
+        // FOR 1 → recorrer todas las áreas del hospital
+        for (int i = 0; i < areas.size(); i++) {
+
+            Areas a = areas.get(i);
+            totalMedicos += a.getNumMedicos();
+
+            // FOR 2 ANIDADO → buscar coincidencia del ID
+            if (a.getIdentificador().equalsIgnoreCase(idArea)) {
+                medicosArea = a.getNumMedicos();
             }
-                //AGREGAR BUSCAR AREA PARA LA PROPORCION Y LA EXISTENCIA DEL ID
-                public Areas buscarArea(String idArea) {
-                    for (Areas area : areas) {
-                        if (area.getIdentificador().equals(idArea)) return area;
-                    }
-                    return null;
-                }
+        }
+
+        // Evitar división entre 0
+        if (totalMedicos == 0) return 0;
+
+        return (double) medicosArea / totalMedicos;
+    }
+    //EXISTE AREA POR ID
+    public boolean existeArea(String idArea) {
+        return buscarArea(idArea) != null;
+    }
+    //AGREGAR BUSCAR AREA PARA LA PROPORCION Y LA EXISTENCIA DEL ID
+
+    public Areas buscarArea(String idArea) {
+        for (Areas area : areas) {
+            if (area.getIdentificador().equals(idArea)) return area;
+        }
+        return null;
+    }
     public String toString() {
-        return this.nombre + " (" + this.cif + ") - " + this.direccion;
+        return this.nombre+ " (" + this.cif + ") - " + this.direccion;
     }
 }
 
