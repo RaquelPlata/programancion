@@ -2,7 +2,7 @@ public class Areas {
     private String Nombre ;
     private String Identificador ;
     private Integer planta ;
-    private  Hospital hospital ;//Área pertenece a un hospital
+    private   Hospital hospital ;//Área pertenece a un hospital
     private int numMedicos;
 
     public Areas ( String nombre , String identificador , int planta , Hospital hospital){

@@ -86,7 +86,8 @@ public class Medico {
     public void setNuevaArea(Areas nuevaArea) {
         this.nuevaArea = nuevaArea;
     }
-    //Calcular suwldo neto
+
+    //Calcular sueldo neto
     public double calcularSueldoNeto(double retencion) {
         return this.salario_bruto - (this.salario_bruto * retencion / 100);
     }
@@ -101,9 +102,14 @@ public class Medico {
         return this.salario_bruto * (tasaImpositiva / 100);
     }
     //Comprobación de edad
-    public boolean esMayorEdad(int MayoriaEdad){
-        return this.edad >= MayoriaEdad;
+    public boolean esMayorEdad(double MayoriaEdad){
+       if (MayoriaEdad == 18) {
+           return this.edad >= MayoriaEdad;
+       }
+       return false;
+
     }
+
     //Calculo del aumento del sueldo
     public double proximoAumento(double porcentajeAumento, int aniosRequeridos){
         if (getAniosAntiguedad() >= aniosRequeridos) {

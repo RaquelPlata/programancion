@@ -76,7 +76,7 @@ public class Hospital {
             Areas a = areas.get(i);
             totalMedicos += a.getNumMedicos();
 
-            // FOR 2 ANIDADO → buscar coincidencia del ID
+            // FOR 2 → buscar coincidencia del ID
             if (a.getIdentificador().equalsIgnoreCase(idArea)) {
                 medicosArea = a.getNumMedicos();
             }
@@ -85,7 +85,7 @@ public class Hospital {
         // Evitar división entre 0
         if (totalMedicos == 0) return 0;
 
-        return (double) medicosArea / totalMedicos;
+        return (double) medicosArea / (double) totalMedicos;
     }
     //EXISTE AREA POR ID
     public boolean existeArea(String idArea) {
