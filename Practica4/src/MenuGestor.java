@@ -11,7 +11,7 @@ class MenuGestor {
     private ArrayList<Contrato> contratos;   // Lista de contratos
 
     // Scanner para entrada por teclado
-    private Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     // Constructor que recibe las listas del sistema
     public MenuGestor(ArrayList<Hospital> hospitales, ArrayList<Areas> areas,
@@ -69,7 +69,7 @@ class MenuGestor {
     //                CREAR HOSPITAL
 
 
-    // Método para crear un nuevo hospital
+    // Metodo para crear un nuevo hospital
     private void crearHospital() {
         System.out.print("Nombre hospital: ");
         String nombre = sc.nextLine();
@@ -330,14 +330,15 @@ class MenuGestor {
     //          LISTAR CONTRATOS POR AÑO
 
 
-    private void contratosPorAnio() {
+    private static void contratosPorAnio() {
         System.out.print("Año: ");
         int anio = sc.nextInt();
         sc.nextLine();
 
-        for (Contrato c : contratos)
-            if (c.esDeAnio(anio))
+        for (Contrato c : Main.contratos) {
+            if (c.esDeAnio(anio)) {
                 System.out.println(c.getMedico().getNombre());
-
+            }
+        }
     }
 }
