@@ -56,8 +56,8 @@ public class Main {
         areas.add(a2);
 
         // Se crean médicos, indicando su área y datos personales
-        Medico m1 = new Medico("Juana", a1, "12345678A", 40, "Mujer", 30000, 2020);
-        Medico m2 = new Medico("Pepe", a2, "20607431Y", 40, "Hombre", 40000, 2010);
+        Medico m1 = new Medico("Juana", a1, "12345678A", 40, "Mujer", 30000, 20200226);
+        Medico m2 = new Medico("Pepe", a2, "20607431Y", 40, "Hombre", 40000, 20100915);
 
         // Se agregan los médicos a la lista global
         medicos.add(m1);

@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 // Clase que gestiona el menú principal del sistema y todas sus funcionalidades
 class MenuGestor {
+public static int salario_bruto ;
 
     // Listas con todos los elementos del sistema
     private ArrayList<Hospital> hospitales;  // Lista de hospitales
@@ -11,7 +12,7 @@ class MenuGestor {
     private ArrayList<Contrato> contratos;   // Lista de contratos
 
     // Scanner para entrada por teclado
-    private Scanner sc = new Scanner(System.in);
+    private static Scanner sc = new Scanner(System.in);
 
     // Constructor que recibe las listas del sistema
     public MenuGestor(ArrayList<Hospital> hospitales, ArrayList<Areas> areas,
@@ -138,42 +139,60 @@ class MenuGestor {
     //                CREAR MÉDICO
 
 
-    private void crearMedico() {
-        System.out.print("Nombre: ");
-        String nombre = sc.nextLine();
-
+    private static void crearMedico() {
         System.out.print("DNI: ");
         String dni = sc.nextLine();
-
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
         System.out.print("Edad: ");
         int edad = sc.nextInt();
         sc.nextLine();
-
         System.out.print("Sexo: ");
         String sexo = sc.nextLine();
-
-        System.out.print("Salario bruto: ");
-        double sb = sc.nextDouble();
+        System.out.print("Sueldo bruto: ");
+        double sueldo = sc.nextDouble();
         sc.nextLine();
 
-        System.out.print("Año de inicio: ");
-        int fi = sc.nextInt();
+        System.out.print("Día inicio: ");
+        int dia = sc.nextInt();
+        System.out.print("Mes inicio: ");
+        int mes = sc.nextInt();
+        System.out.print("Año inicio: ");
+        int anio = sc.nextInt();
         sc.nextLine();
 
-        System.out.print("ID área trabajo: ");
-        String id = sc.nextLine();
+        // SOLO AÑO PARA EL CONTRATO
+        int fecha_i = anio;
 
-        // Busca el área donde trabajará
-        Areas area = Main.buscarArea(id);
+        // Seleccionar área
+        System.out.println("Selecciona el área del médico:");
+        for (int i = 0; i < Main.areas.size(); i++) {
+            System.out.println(i + ": " + Main.areas.get(i).getNombre() +
+                    " (ID: " + Main.areas.get(i).getIdentificador() + ")");
+        }
+        int indexArea = sc.nextInt();
+        sc.nextLine();
+        Areas areaSeleccionada = Main.areas.get(indexArea);
 
-        // Crea el médico
-        Medico m = new Medico(nombre, area, dni, edad, sexo, sb, fi);
-        medicos.add(m);
+        // Crear médico
 
-        // Registra su contrato
-        contratos.add(new Contrato(fi, m, area.getHospital()));
+        Medico m = new Medico(nombre, areaSeleccionada, dni, edad, sexo, fecha_i, salario_bruto);
+        Main.medicos.add(m);
+        System.out.println("Médico creado correctamente.");
 
-        System.out.println("Médico creado y contrato registrado.");
+        // Seleccionar hospital para el contrato
+        System.out.println("Selecciona el hospital para el contrato:");
+        for (int i = 0; i < Main.hospitales.size(); i++) {
+            System.out.println(i + ": " + Main.hospitales.get(i).getNombre());
+        }
+        int indexHospital = sc.nextInt();
+        sc.nextLine();
+        Hospital h = Main.hospitales.get(indexHospital);
+
+        // Crear contrato usando SOLO EL AÑO
+        Contrato c = new Contrato(fecha_i, m, h);
+        Main.contratos.add(c);
+        System.out.println("Contrato creado correctamente.");
     }
 
 
