@@ -349,14 +349,15 @@ public static int salario_bruto ;
     //          LISTAR CONTRATOS POR AÑO
 
 
-    private void contratosPorAnio() {
+    private static void contratosPorAnio() {
         System.out.print("Año: ");
         int anio = sc.nextInt();
         sc.nextLine();
 
-        for (Contrato c : contratos)
-            if (c.esDeAnio(anio))
+        for (Contrato c : Main.contratos) {
+            if (c.esDeAnio(anio)) {
                 System.out.println(c.getMedico().getNombre());
-
+            }
+        }
     }
 }
