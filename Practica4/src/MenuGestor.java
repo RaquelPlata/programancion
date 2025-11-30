@@ -338,5 +338,6 @@ class MenuGestor {
         for (Contrato c : contratos)
             if (c.esDeAnio(anio))
                 System.out.println(c.getMedico().getNombre());
+
     }
 }

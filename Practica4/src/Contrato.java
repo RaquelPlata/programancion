@@ -49,6 +49,11 @@ public class Contrato {
     public  int diasDeCreacion(int fechaHoyAnio,int fechaCreacionAnio){
         return 365*(fechaCreacionAnio - fechaHoyAnio);
     }
+    public String toString() {
+        return "Contrato: " + this.medico.getNombre() + " en " + this.hospital.getNombre() + " - " + this.fechaCreacion;
+    }
 
 }
+
+
 
