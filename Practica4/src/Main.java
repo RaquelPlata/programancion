@@ -33,8 +33,8 @@ public class Main {
     private static void precargarDatos() {
 
         // Se crean direcciones para los hospitales
-        Direccion d1 = new Direccion("Av España", 10, 28001, "Madrid", "Madrid");
-        Direccion d2 = new Direccion("Av España", 20, 28005, "Madrid", "Madrid");
+        Direccion d1 = new Direccion("Av Ronda", 10, 28001, "Madrid", "Madrid");
+        Direccion d2 = new Direccion("Av España", 20, 28005, "Bornos", "Cadiz");
 
         // Se crean hospitales con su dirección
         Hospital h1 = new Hospital("Hospital Central", "CIF123", d1);
@@ -42,7 +42,7 @@ public class Main {
 
         // Se crean áreas asociadas a los hospitales
         Areas a1 = new Areas("Urgencias", "A1", 1, h1);
-        Areas a2 = new Areas("Pediatría", "A2", 2, h2);
+        Areas a2 = new Areas("Pediatria", "A2", 2, h2);
 
         // Se agrega el área A1 al hospital H1
         h1.agregarAreas(a1);
@@ -57,7 +57,7 @@ public class Main {
 
         // Se crean médicos, indicando su área y datos personales
         Medico m1 = new Medico("Juana", a1, "12345678A", 40, "Mujer", 30000, 20200226);
-        Medico m2 = new Medico("Pepe", a2, "20607431Y", 40, "Hombre", 40000, 20100915);
+        Medico m2 = new Medico("Pepe", a2, "20607431Y", 30, "Hombre", 40000, 20100915);
 
         // Se agregan los médicos a la lista global
         medicos.add(m1);
