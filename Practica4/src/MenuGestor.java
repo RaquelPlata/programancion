@@ -69,7 +69,7 @@ class MenuGestor {
     //                CREAR HOSPITAL
 
 
-    // Método para crear un nuevo hospital
+    // Metodo para crear un nuevo hospital
     private void crearHospital() {
         System.out.print("Nombre hospital: ");
         String nombre = sc.nextLine();
