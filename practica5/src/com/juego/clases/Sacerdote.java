@@ -20,7 +20,7 @@ public class Sacerdote implements Clase{
 
     public Habilidad[] getHabilidades(){
         return new Habilidad[]{
-                new DanioCuerpo("Bastón Sagrado",8),
+                new DanioCuerpo("Bastón Sagrado",14),
                 new CuraCuerpo("Curación",25),
                 new DanioDistancia("Luz Castigadora",12)
         };

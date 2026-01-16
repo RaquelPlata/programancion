@@ -22,7 +22,7 @@ public class Druida implements Clase{
     public Habilidad[] getHabilidades(){
         return new Habilidad[]{
                 new DanioCuerpo("Garra Natural",15),
-                new CuraCuerpo("Aliento Vital",20),
+                new CuraCuerpo("Aliento Vital",10),
                 new DanioDistancia(" Espina ",25)
         };
     }

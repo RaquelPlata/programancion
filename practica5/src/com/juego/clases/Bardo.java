@@ -20,9 +20,9 @@ public class Bardo implements Clase{
 
     public Habilidad[] getHabilidades(){
         return new Habilidad[]{
-                new DanioCuerpo("Ataque Melódico",20),
-                new CuraCuerpo("Canción Sanadora",10),
-                new DanioDistancia("Eco Doloroso ",14)
+                new DanioCuerpo("Ataque Melódico",25),
+                new CuraCuerpo("Canción Sanadora",15),
+                new DanioDistancia("Eco Doloroso ",22)
         };
     }
 }

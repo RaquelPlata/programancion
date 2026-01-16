@@ -23,7 +23,7 @@ public class Mago implements Clase{
 
     public Habilidad[] getHabilidades(){
         return new Habilidad[]{
-                new DanioCuerpo("Toque Mágico",3),
+                new DanioCuerpo("Toque Mágico",13),
                 new CuraCuerpo("Sanación Arcana",10),
                 new DanioDistancia("Rayo Mágico",35)
         };
