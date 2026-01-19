@@ -20,8 +20,9 @@ public class Mago implements Clase {
     public Mago(
             String nombre_ataque,int ataque_valor,
             String nombre_cura,int cura_valor,
-            String nombre_distancia,int distancia_valor
-    ){
+            String nombre_distancia,int distancia_valor)
+
+    {
         this.nombre_ataque = nombre_ataque;
         this.ataque_valor = ataque_valor;
         this.nombre_cura = nombre_cura;
