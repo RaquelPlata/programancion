@@ -1,65 +1,65 @@
-// Indica que esta clase pertenece al paquete com.juego.clases
 package com.juego.clases;
 
-// Importa todas las clases del paquete com.juego.habilidades
-// Esto permite usar clases como DanioCuerpo, CuraCuerpo, etc.
 import com.juego.habilidades.*;
 
-// Declaración de la clase Bardo
-// "implements Clase" significa que Bardo cumple el contrato de la interfaz Clase
+// Clase que representa la clase Bardo
+// Define los atributos de la clase y sus habilidades
 public class Bardo implements Clase {
 
-    // Metodo que devuelve el nombre de la clase/personaje
-    // En este caso, siempre devuelve "Bardo"
-    public String getNombre(){
+    // Nombres de las habilidades
+    private String nombre_ataque;
+    private String nombre_cura;
+    private String nombre_distancia;
+
+    // Valores de las habilidades
+    private int ataque_valor;
+    private int cura_valor;
+    private int distancia_valor;
+
+    // Constructor: asigna habilidades y valores
+    public Bardo(
+            String nombre_ataque,int ataque_valor,
+            String nombre_cura,int cura_valor,
+            String nombre_distancia,int distancia_valor
+    ){
+        this.nombre_ataque = nombre_ataque;
+        this.ataque_valor = ataque_valor;
+        this.nombre_cura = nombre_cura;
+        this.cura_valor = cura_valor;
+        this.nombre_distancia = nombre_distancia;
+        this.distancia_valor = distancia_valor;
+    }
+
+    public String getNombre() {
         return "Bardo";
     }
 
-    // Metodo que devuelve la fuerza del Bardo
-    // El Bardo no es fuerte físicamente, por eso devuelve 0
-    public int f(){
+
+    public int f() {
         return 0;
     }
 
-    // Metodo que devuelve la inteligencia del Bardo
-    // El Bardo tiene buena inteligencia, por eso devuelve 3
-    public int i(){
+
+    public int i() {
         return 3;
     }
 
-    // Metodo que devuelve la destreza del Bardo
-    // Aquí se indica que no destaca en destreza
-    public int d(){
+
+    public int d() {
         return 0;
     }
 
-    // Metodo que devuelve la vida máxima del Bardo
-    // El Bardo tiene 90 puntos de vida
-    public int vida(){
+
+    public int vida() {
         return 90;
     }
 
-    // Metodo que devuelve un arreglo (array) de habilidades
-    // Cada habilidad es un objeto de tipo Habilidad
+    // Devuelve un arreglo con las habilidades de la clase
     public Habilidad[] getHabilidades(){
-
-        // Se crea y devuelve un array con las habilidades del Bardo
         return new Habilidad[]{
-
-                // Habilidad de daño cuerpo a cuerpo
-                // Nombre: "Ataque Melódico"
-                // Daño: 25
-                new DanioCuerpo("Ataque Melódico",25),
-
-                // Habilidad de curación cuerpo a cuerpo
-                // Nombre: "Canción Sanadora"
-                // Cura: 15
-                new CuraCuerpo("Canción Sanadora",15),
-
-                // Habilidad de daño a distancia
-                // Nombre: "Eco Doloroso"
-                // Daño: 22
-                new DanioDistancia("Eco Doloroso ",22)
+                new DanioCuerpo(nombre_ataque,ataque_valor),
+                new CuraCuerpo(nombre_cura,cura_valor),
+                new DanioDistancia(nombre_distancia, distancia_valor)
         };
     }
 }

@@ -1,40 +1,41 @@
-// Indica que esta clase pertenece al paquete com.juego.habilidades
 package com.juego.habilidades;
 
-// Declaración de la clase CuraCuerpo
-// Implementa la interfaz Habilidad, por lo que debe definir sus métodos
+// Clase que representa una habilidad de curación para el cuerpo
 public class CuraCuerpo implements Habilidad {
 
-    // Cantidad de veces que se puede usar esta habilidad
+    // Cantidad de usos restantes de la habilidad
     private int usos = 3;
 
-    // Valor de curación que otorga cada vez que se usa
+    // Valor de curación que aplica la habilidad
     private int valor;
 
-    // Nombre de la habilidad (por ejemplo, "Canción Sanadora")
+    // Nombre de la habilidad
     private String nombre;
 
-    // Constructor de la clase
-    // Se recibe el nombre de la habilidad y el valor de curación
-    public CuraCuerpo(String nombre,int valor){
-        this.nombre = nombre; // Guarda el nombre
-        this.valor = valor;   // Guarda la cantidad de curación
+    // Constructor: recibe el nombre de la habilidad y el valor de curación
+    public CuraCuerpo(String nombre, int valor) {
+        this.nombre = nombre;
+        this.valor = valor;
     }
 
-    // Devuelve el nombre de la habilidad y cuántos usos quedan
-    public String getNombre(){
+    // Devuelve el nombre de la habilidad junto con los usos restantes
+    public String getNombre() {
         return nombre + " (" + usos + " usos)";
     }
 
-    // Usa la habilidad
-    // Disminuye la cantidad de usos y devuelve el valor de curación
-    public int usar(){
-        usos--; // Restar un uso
-        return valor; // Retorna la cantidad de curación
+    // Usa la habilidad: decrementa los usos y devuelve el valor de curación
+    public int usar() {
+        usos--;           // Resta un uso
+        return valor;     // Devuelve la cantidad de vida que se curará
     }
 
-    // Indica si la habilidad todavía tiene usos disponibles
-    public boolean tieneUsos(){
-        return usos > 0; // Devuelve true si hay usos restantes
+    // Indica si la habilidad aún tiene usos disponibles
+    public boolean tieneUsos() {
+        return usos > 0;
+    }
+
+    @Override
+    public int getUsosRestantes() {
+        return usos;
     }
 }

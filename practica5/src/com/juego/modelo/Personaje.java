@@ -21,20 +21,28 @@ public class Personaje {
     private List<Habilidad> habilidades;
 
     // Constructor: recibe nombre, raza y clase del personaje
-    public Personaje(String n, Raza r, Clase c) {
-        nombre = n;
+    public Personaje(String n,Raza r,Clase c){
 
-        // Crear stats base a partir de la raza
-        stats = new Stats(r.f(), r.i(), r.d(), r.vida());
+        nombre=n;
 
-        // Aplicar bonus de la clase a las estadísticas
-        stats.bonus(c.f(), c.i(), c.d());
+        stats=new Stats(
+                r.f(),
+                r.i(),
+                r.d(),
+                r.vida()
+        );
 
-        // Inicializa la vida con el valor máximo de vida
-        vida = stats.getVidaMax();
+        stats.aplicarBonus(
+                c.f(),
+                c.i(),
+                c.d()
+        );
 
-        // Copia las habilidades de la clase en una lista mutable
-        habilidades = new ArrayList<>(List.of(c.getHabilidades()));
+        stats.setVidaMax(c.vida());
+
+        vida=stats.getVidaMax();
+
+        habilidades=List.of(c.getHabilidades());
     }
 
     // Devuelve el nombre del personaje
@@ -67,7 +75,7 @@ public class Personaje {
     }
 
     // Representación en texto del personaje: nombre y vida actual
-    @Override
+
     public String toString() {
         return nombre + " HP:" + vida;
     }

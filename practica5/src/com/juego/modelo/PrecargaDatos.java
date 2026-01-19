@@ -1,38 +1,78 @@
-package com.juego.modelo; // Indica que esta clase pertenece al paquete modelo
+package com.juego.modelo;
 
-import com.juego.razas.*; // Importa todas las razas disponibles (Humano, Elfo, Enano)
-import com.juego.clases.*; // Importa todas las clases disponibles (Guerrero, Mago, Sacerdote, etc.)
+import com.juego.razas.*;
+import com.juego.clases.*;
 
-// Clase que sirve para precargar datos de ejemplo en el juego
-// Esto es útil para tener personajes ya creados y poder probar combates o menús sin necesidad de crear nuevos
+// Clase para crear datos precargados de razas, clases y personajes
 public class PrecargaDatos {
 
-    // Método estático que recibe un gestor de personajes
-    // Agrega personajes predeterminados al gestor
-    public static void cargar(GestorPersonajes g){
+    // Carga inicial de personajes al juego
+    public static void cargar(GestorPersonajes g) {
 
-        // Crea un personaje llamado "Lulu", raza Enano y clase Sacerdote, y lo agrega al gestor
-        g.add(new Personaje("Lulu", new Enano(), new Sacerdote()));
+        g.add(new Personaje("PEPI", crearElfo(), crearMonje()));
+        g.add(new Personaje("LOREM", crearHumano(), crearDruida()));
+        g.add(new Personaje("MARCA", crearEnano(), crearSacerdote()));
+    }
 
-        // Crea un personaje llamado "Vera", raza Elfo y clase Pícaro, y lo agrega al gestor
-        g.add(new Personaje("Vera", new Elfo(), new Picaro()));
+    // Métodos para crear razas con atributos iniciales
+    public static Raza crearHumano() {
+        return new Humano("Humano", 5, 5, 5, 100);
+    }
 
-        // Crea un personaje llamado "Darek", raza Enano y clase Paladín, y lo agrega al gestor
-        g.add(new Personaje("Darek", new Enano(), new Paladin()));
+    public static Raza crearElfo() {
+        return new Elfo("Elfo", 4, 6, 7, 90);
+    }
 
-        // Crea un personaje llamado "Mira", raza Humano y clase Monje, y lo agrega al gestor
-        g.add(new Personaje("Mira", new Humano(), new Monje()));
+    public static Raza crearEnano() {
+        return new Enano("Enano", 7, 4, 4, 110);
+    }
 
-        // Crea un personaje llamado "Rex", raza Elfo y clase Mago, y lo agrega al gestor
-        g.add(new Personaje("Rex", new Elfo(), new Mago()));
+    // Métodos para crear clases y asignar habilidades
+    public static Clase crearGuerrero() {
+        return new Guerrero("puño", 25,
+                "grandote", 8,
+                "lanzamiento de cabeza", 10);
+    }
 
-        // Crea un personaje llamado "Fox", raza Humano y clase Guerrero, y lo agrega al gestor
-        g.add(new Personaje("Fox", new Humano(), new Guerrero()));
+    public static Clase crearPaladin() {
+        return new Paladin("Espada maldita", 18,
+                "Luz floral", 15,
+                "Judia voladora", 10);
+    }
 
-        // Crea un personaje llamado "Rolf", raza Humano y clase Druida, y lo agrega al gestor
-        g.add(new Personaje("Rolf", new Humano(), new Druida()));
+    public static Clase crearMonje() {
+        return new Monje("Puño", 17,
+                "Calma", 8,
+                " Onda", 18);
+    }
 
-        // Crea un personaje llamado "Dana", raza Elfo y clase Bardo, y lo agrega al gestor
-        g.add(new Personaje("Dana", new Elfo(), new Bardo()));
+    public static Clase crearPicaro() {
+        return new Picaro("Cuchillada", 22,
+                " Vendaje", 6,
+                "Daga ", 20);
+    }
+
+    public static Clase crearDruida() {
+        return new Druida(" Garra", 10,
+                "Curita", 25,
+                " raices", 25);
+    }
+
+    public static Clase crearSacerdote() {
+        return new Sacerdote("Golpe", 8,
+                "Sanar", 25,
+                "Luz ", 12);
+    }
+
+    public static Clase crearMago() {
+        return new Mago("Bastón ", 7,
+                "Escudo ", 10,
+                "Dragon", 50);
+    }
+
+    public static Clase crearBardo() {
+        return new Bardo("Golpe ", 10,
+                "Canción", 13,
+                "Nota ", 18);
     }
 }

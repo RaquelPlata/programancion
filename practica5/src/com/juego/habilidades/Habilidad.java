@@ -16,4 +16,6 @@ public interface Habilidad {
     // Metodo que indica si la habilidad todavía tiene usos disponibles
     // Devuelve true si todavía se puede usar la habilidad, false si ya no
     boolean tieneUsos();
+
+    int getUsosRestantes();
 }

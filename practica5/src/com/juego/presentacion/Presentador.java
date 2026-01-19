@@ -4,86 +4,82 @@ import com.juego.modelo.*;
 import com.juego.razas.*;
 import com.juego.clases.*;
 
+// Clase Presentador: conecta la vista con el modelo
+// Controla el flujo del juego
 public class Presentador {
 
-    // Vista para interactuar con el usuario
-    private Vista vista;
+    private Vista vista; // vista a usar
+    private GestorPersonajes gestor; // gestor de personajes
 
-    // Gestor de personajes (almacena y maneja los personajes creados)
-    private GestorPersonajes gestor;
-
-    // Constructor que recibe la vista y el gestor de personajes
-    public Presentador(Vista v, GestorPersonajes g){
+    public Presentador(Vista v, GestorPersonajes g) {
         vista = v;
         gestor = g;
     }
 
-    // Metodo principal que inicia el ciclo del menú
-    public void iniciar(){
+    // Inicia el juego mostrando el menú y manejando opciones
+    public void iniciar() {
 
         int op;
         do {
-            vista.menu();           // Muestra el menú
-            op = vista.leer();      // Lee la opción elegida por el usuario
+            vista.menu();
+            op = vista.leer();
 
-            switch(op){
-                case 1 -> jugar();   // Opción de combate
-                case 2 -> crear();   // Opción de crear personaje
+            switch (op) {
+                case 1 -> jugar();  // inicia un combate
+                case 2 -> crear();  // crea un personaje
             }
 
-        } while(op != 3);          // Sale cuando el usuario elige 3
+        } while (op != 3); // sale al elegir opción 3
     }
 
-    // ----------------- METODO DE JUEGO -----------------
-    private void jugar(){
+    // Método para iniciar un combate entre dos personajes
+    private void jugar() {
 
-        // Muestra la lista de personajes disponibles
-        vista.listar(gestor.get());
+        vista.listar(gestor.get()); // lista personajes disponibles
 
-        // Pide a los usuarios seleccionar personajes
-        int a = vista.pedir("Jugador 1: ");
-        int b = vista.pedir("Jugador 2: ");
+        int a = vista.pedir("Jugador 1: "); // pide índice del jugador 1
+        int b = vista.pedir("Jugador 2: "); // pide índice del jugador 2
 
-        // Inicia un combate entre los personajes seleccionados
         new Combate().iniciar(
                 gestor.get().get(a),
-                gestor.get().get(b));
+                gestor.get().get(b)
+        );
     }
 
-    // ----------------- METODO DE CREAR PERSONAJE -----------------
-    private void crear(){
+    // Método para crear un personaje
+    private void crear() {
 
-        vista.mensaje("\nNombre:");          // Solicita nombre
-        String nombre = vista.leerTexto();   // Lee el nombre ingresado
+        vista.mensaje("Nombre:");
+        String n = vista.leerTexto();
 
-        Raza raza = elegirRaza();            // Elige raza
-        Clase clase = elegirClase();          // Elige clase
+        Raza r = elegirRaza(); // elige raza
+        Clase c = elegirClase(); // elige clase
 
-        // Crea el personaje y lo agrega al gestor
-        gestor.add(new Personaje(nombre, raza, clase));
-
-        vista.mensaje("✔ Personaje creado"); // Mensaje de confirmación
+        gestor.add(new Personaje(n, r, c)); // crea el personaje y lo agrega
+        vista.mensaje("✔ Creado");
     }
 
-    // Metodo para elegir la raza del personaje
-    private Raza elegirRaza(){
+    // Selección de raza por parte del usuario
+    private Raza elegirRaza() {
 
-        vista.mensaje("\nRazas:");
-        vista.mensaje("1.Humano\n2.Elfo\n3.Enano");
+        vista.mensaje("""
+        \nRazas
+        1.Humano
+        2.Elfo
+        3.Enano""");
 
-        // Devuelve la raza según la opción elegida
-        return switch(vista.leer()){
-            case 1 -> new Humano();
-            case 2 -> new Elfo();
-            default -> new Enano();
+        return switch (vista.leer()) {
+            case 1 -> PrecargaDatos.crearHumano();
+            case 2 -> PrecargaDatos.crearElfo();
+            default -> PrecargaDatos.crearEnano();
         };
     }
 
-    // Metodo para elegir la clase del personaje
-    private Clase elegirClase(){
+    // Selección de clase por parte del usuario
+    private Clase elegirClase() {
 
-        vista.mensaje("\nClases:");
         vista.mensaje("""
+        \nClases
         1.Guerrero
         2.Paladin
         3.Monje
@@ -93,16 +89,15 @@ public class Presentador {
         7.Mago
         8.Bardo""");
 
-        // Devuelve la clase según la opción elegida
-        return switch(vista.leer()){
-            case 1 -> new Guerrero();
-            case 2 -> new Paladin();
-            case 3 -> new Monje();
-            case 4 -> new Picaro();
-            case 5 -> new Druida();
-            case 6 -> new Sacerdote();
-            case 7 -> new Mago();
-            default -> new Bardo();
+        return switch (vista.leer()) {
+            case 1 -> PrecargaDatos.crearGuerrero();
+            case 2 -> PrecargaDatos.crearPaladin();
+            case 3 -> PrecargaDatos.crearMonje();
+            case 4 -> PrecargaDatos.crearPicaro();
+            case 5 -> PrecargaDatos.crearDruida();
+            case 6 -> PrecargaDatos.crearSacerdote();
+            case 7 -> PrecargaDatos.crearMago();
+            default -> PrecargaDatos.crearBardo();
         };
     }
 }

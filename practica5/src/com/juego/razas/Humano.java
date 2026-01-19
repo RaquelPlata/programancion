@@ -1,37 +1,58 @@
-// Indica que esta clase pertenece al paquete com.juego.razas
 package com.juego.razas;
 
-// Declaración de la clase Humano
-// Implementa la interfaz Raza, por lo que debe definir todos los métodos obligatorios
+// La clase Humano representa una raza concreta del juego
+// Implementa la interfaz Raza, que define los atributos básicos de cualquier raza
 public class Humano implements Raza {
 
-    // Devuelve el nombre de la raza
-    // Siempre será "Humano"
-    public String getNombre(){
-        return "Humano";
+    // Nombre del personaje (o de la raza)
+    private String nombre;
+
+    // Atributos principales de la raza:
+    // f = fuerza
+    // i = inteligencia
+    // d = destreza
+    // vida = puntos de vida iniciales
+    private int f, i, d, vida;
+
+    // constructor
+    // Permite crear un Humano asignando nombre y atributos
+    public Humano(String nombre, int f, int i, int d, int vida) {
+        this.nombre = nombre;
+        this.f = f;
+        this.i = i;
+        this.d = d;
+        this.vida = vida;
     }
 
-    // Devuelve la fuerza base de la raza Humano
-    // Moderada, equilibrada entre todas las estadísticas
-    public int f(){
-        return 5;
+    public Humano() {
+
     }
 
-    // Devuelve la inteligencia base de la raza Humano
-    // Moderada, equilibrada
-    public int i(){
-        return 5;
+    // metodo getter
+    // Devuelven los valores de cada atributo
+
+    // Nombre del personaje
+    public String getNombre() {
+        return nombre;
     }
 
-    // Devuelve la destreza base de la raza Humano
-    // Moderada, equilibrada
-    public int d(){
-        return 5;
+    // Fuerza
+    public int f() {
+        return f;
     }
 
-    // Devuelve la vida base de la raza Humano
-    // Media, reflejando equilibrio general
-    public int vida(){
-        return 100;
+    // Inteligencia
+    public int i() {
+        return i;
+    }
+
+    // Destreza
+    public int d() {
+        return d;
+    }
+
+    // Vida inicial
+    public int vida() {
+        return vida;
     }
 }

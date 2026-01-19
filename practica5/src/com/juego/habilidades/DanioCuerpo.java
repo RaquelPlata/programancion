@@ -1,42 +1,40 @@
-
-// Indica que esta clase pertenece al paquete com.juego.habilidades
 package com.juego.habilidades;
 
-// Declaración de la clase DanioCuerpo
-// Implementa la interfaz Habilidad, por lo que debe definir sus métodos
+// Clase que representa una habilidad de daño cuerpo a cuerpo
 public class DanioCuerpo implements Habilidad {
 
-    // Cantidad de veces que se puede usar esta habilidad
-    // Los ataques físicos suelen poder usarse más que las curaciones
+    // Cantidad de usos restantes de la habilidad
     private int usos = 5;
 
-    // Valor de daño que inflige cada vez que se usa
+    // Valor de daño que causa la habilidad
     private int valor;
 
-    // Nombre de la habilidad (por ejemplo, "Golpe Fuerte")
+    // Nombre de la habilidad
     private String nombre;
 
-    // Constructor de la clase
-    // Se recibe el nombre de la habilidad y la cantidad de daño que hace
-    public DanioCuerpo(String nombre,int valor){
-        this.nombre = nombre; // Guarda el nombre
-        this.valor = valor;   // Guarda el daño que inflige
+    // Constructor: recibe el nombre de la habilidad y el valor de daño
+    public DanioCuerpo(String nombre, int valor){
+        this.nombre = nombre;
+        this.valor = valor;
     }
 
-    // Devuelve el nombre de la habilidad y cuántos usos quedan
+    // Devuelve el nombre de la habilidad junto con los usos restantes
     public String getNombre(){
         return nombre + " (" + usos + " usos)";
     }
 
-    // Usa la habilidad
-    // Disminuye la cantidad de usos y devuelve el daño infligido
+    // Usa la habilidad: decrementa los usos y devuelve el valor de daño
     public int usar(){
-        usos--;    // Restar un uso
-        return valor; // Retorna el daño
+        usos--;           // Resta un uso
+        return valor;     // Devuelve el daño que se aplicará al rival
     }
 
-    // Indica si la habilidad todavía tiene usos disponibles
+    // Indica si la habilidad aún tiene usos disponibles
     public boolean tieneUsos(){
-        return usos > 0; // Devuelve true si hay usos restantes
+        return usos > 0;
+    }
+    @Override
+    public int getUsosRestantes() {
+        return usos;
     }
 }

@@ -1,37 +1,46 @@
-// Indica que esta clase pertenece al paquete com.juego.razas
 package com.juego.razas;
 
-// Declaración de la clase Elfo
-// Implementa la interfaz Raza, por lo que debe definir todos los métodos obligatorios
+// La clase Elfo representa una raza concreta del juego
+// Implementa la interfaz Raza, definiendo los atributos propios de un elfo
 public class Elfo implements Raza {
 
-    // Devuelve el nombre de la raza
-    // Siempre será "Elfo"
-    public String getNombre(){
-        return "Elfo";
+    // Nombre del personaje
+    private String nombre;
+
+    // Atributos principales de la raza:
+    // f = fuerza, i = inteligencia, d = destreza, vida = puntos de vida iniciales
+    private int f, i, d, vida;
+
+    // CONSTRUCTOR
+    // Permite crear un Elfo con nombre y atributos específicos
+    public Elfo(String nombre, int f, int i, int d, int vida) {
+        this.nombre = nombre;
+        this.f = f;
+        this.i = i;
+        this.d = d;
+        this.vida = vida;
     }
 
-    // Devuelve la fuerza base de la raza Elfo
-    // Es moderada, no es su atributo principal
-    public int f(){
-        return 4;
+    // MÉTODOS GETTERS
+    // Devuelven los valores de cada atributo
+
+    public String getNombre() {
+        return nombre;
     }
 
-    // Devuelve la inteligencia base de la raza Elfo
-    // Es alta, ya que los elfos suelen ser sabios y astutos
-    public int i(){
-        return 6;
+    public int f() {
+        return f;
     }
 
-    // Devuelve la destreza base de la raza Elfo
-    // Es muy alta, representando agilidad y rapidez
-    public int d(){
-        return 7;
+    public int i() {
+        return i;
     }
 
-    // Devuelve la vida base de la raza Elfo
-    // Menor que la de un humano o guerrero, ya que son más frágiles
-    public int vida(){
-        return 90;
+    public int d() {
+        return d;
+    }
+
+    public int vida() {
+        return vida;
     }
 }

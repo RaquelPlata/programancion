@@ -1,65 +1,58 @@
-// Indica que esta clase pertenece al paquete com.juego.clases
 package com.juego.clases;
 
-// Importa todas las clases del paquete com.juego.habilidades
-// Permite usar los distintos tipos de habilidades del juego
 import com.juego.habilidades.*;
 
-// Declaración de la clase Picaro
-// Implementa la interfaz Clase, por lo que debe definir todos los métodos obligatorios
+// Clase que representa la clase Picaro
+// Define los atributos de la clase y sus habilidades
 public class Picaro implements Clase {
 
-    // Devuelve el nombre de la clase/personaje
-    // Siempre devuelve "Picaro"
+    // Nombres de las habilidades
+    private String nombre_ataque;
+    private String nombre_cura;
+    private String nombre_distancia;
+
+    // Valores de las habilidades
+    private int ataque_valor;
+    private int cura_valor;
+    private int distancia_valor;
+
+    // Constructor: asigna habilidades y valores
+    public Picaro(
+            String nombre_ataque,int ataque_valor,
+            String nombre_cura,int cura_valor,
+            String nombre_distancia,int distancia_valor
+    ){
+        this.nombre_ataque = nombre_ataque;
+        this.ataque_valor = ataque_valor;
+        this.nombre_cura = nombre_cura;
+        this.cura_valor = cura_valor;
+        this.nombre_distancia = nombre_distancia;
+        this.distancia_valor = distancia_valor;
+    }
+
     public String getNombre(){
         return "Picaro";
     }
-
-    // Devuelve la fuerza del Pícaro
-    // No basa su daño en fuerza bruta
     public int f(){
         return 0;
     }
-
-    // Devuelve la inteligencia del Pícaro
-    // No usa magia ni conocimientos especiales
     public int i(){
         return 0;
     }
-
-    // Devuelve la destreza del Pícaro
-    // Es su atributo principal, por eso es alto (3)
     public int d(){
         return 3;
     }
-
-    // Devuelve la vida máxima del Pícaro
-    // Tiene buena supervivencia, pero no es un tanque
     public int vida(){
         return 105;
     }
 
-    // Devuelve un arreglo con las habilidades del Pícaro
-    // Cada habilidad es un objeto de tipo Habilidad
+
+    // Devuelve un arreglo con las habilidades de la clase
     public Habilidad[] getHabilidades(){
-
-        // Se crea y devuelve el array de habilidades
         return new Habilidad[]{
-
-                // Habilidad de daño cuerpo a cuerpo
-                // Nombre: "Puñalada"
-                // Daño: 22 (ataque rápido y preciso)
-                new DanioCuerpo("Puñalada",22),
-
-                // Habilidad de curación / escape
-                // Nombre: "Escape"
-                // Cura: 6 (representa huir y recuperarse un poco)
-                new CuraCuerpo("Escape",6),
-
-                // Habilidad de daño a distancia
-                // Nombre: "Disparo Rápido"
-                // Daño: 20 (ataque veloz desde lejos)
-                new DanioDistancia("Disparo Rápido",20)
+                new DanioCuerpo(nombre_ataque,ataque_valor),
+                new CuraCuerpo(nombre_cura,cura_valor),
+                new DanioDistancia(nombre_distancia, distancia_valor)
         };
     }
 }
