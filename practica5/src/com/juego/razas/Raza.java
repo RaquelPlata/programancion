@@ -24,4 +24,5 @@ public interface Raza {
     // Metodo que devuelve la vida base de la raza
     // Representa cuánta salud inicial tiene el personaje
     int vida();
+
 }
