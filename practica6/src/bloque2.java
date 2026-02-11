@@ -5,7 +5,7 @@ public class bloque2 {
     public static void main() {
         System.out.println("\n Bloque2");
 
-        // Ejercicio7
+        // -Ejercicio7
         System.out.println("\n Ejercicio 7: El Repositorio de Gremios");
         HashMap<String, ArrayList<String>> gremios = new HashMap<>();
 
@@ -23,7 +23,7 @@ public class bloque2 {
 
         imprimirMiembrosGremio(gremios, "Magos");
 
-        // Ejercicio8
+        // -Ejercicio8
         System.out.println("\n Ejercicio 8: El Sistema de Cosas ");
         HashMap<String, HashSet<String>> loot = new HashMap<>();
         HashSet<String> CosasTrasgo = new HashSet<>();
@@ -36,7 +36,8 @@ public class bloque2 {
         System.out.println("¿Se añadió 'Espada Oxidada' otra vez?: " + duplicado);
         System.out.println("Loot del Trasgo: " + loot.get("Trasgo"));
 
-        // Ejercicio9
+
+        // -Ejercicio9
         System.out.println("\n Ejercicio 9: Rastreador de Estadísticas ");
         HashMap<String, HashMap<String, Integer>> estadisticas = new HashMap<>();
 
@@ -53,7 +54,7 @@ public class bloque2 {
             }
         }
 
-        // Ejercicio10
+        // -Ejercicio10
         System.out.println("\n Ejercicio 10: El Buscador de Traidores ");
         buscarYEliminarTraidor(gremios, "Judas");
     }

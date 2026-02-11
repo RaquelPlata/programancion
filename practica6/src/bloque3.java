@@ -4,114 +4,121 @@ public class bloque3 {
 
     public static void main(String[] args) {
 
-        //Ejercicio11
+        // EJERCICIO 11
+        // Mapa que almacena el precio base de cada objeto
+        HashMap<String, Double> precios = new HashMap<>();
+        precios.put("Espada", 100.0);     // Precio de la espada
+        precios.put("Escudo", 120.0);     // Precio del escudo
+        precios.put("Poción", 25.0);      // Precio de la poción
+        precios.put("Armadura", 250.0);   // Precio de la armadura
+        precios.put("Casco", 90.0);       // Precio del casco
+        precios.put("Anillo", 300.0);     // Precio del anillo
 
-        HashMap<String, Double> preciosBase = new HashMap<>();
-        preciosBase.put("Espada", 100.00);
-        preciosBase.put("Escudo", 120.00);
-        preciosBase.put("Poción", 25.00);
-        preciosBase.put("Armadura", 250.00);
-        preciosBase.put("Casco", 90.00);
-        preciosBase.put("Anillo", 300.00);
-
+        // Mapa que relaciona cada ciudad con los objetos que vende
         HashMap<String, ArrayList<String>> ciudades = new HashMap<>();
-        ciudades.put("Ventormenta", new ArrayList<>(Arrays.asList(
-                "Espada", "Escudo", "Poción", "Armadura", "Casco", "Anillo"
-        )));
+        // Se añaden todos los objetos disponibles en la ciudad de Arcos
+        ciudades.put("Arcos", new ArrayList<>(Arrays.asList(
+                "Espada", "Escudo", "Poción", "Armadura", "Casco", "Anillo")));
 
-        HashMap<String, Double> preciosVentormenta =
-                obtenerPreciosCiudad("Ventormenta", preciosBase, ciudades);
+        System.out.println("EJERCICIO 11");
 
-        System.out.println("\nEJERCICIO 11");
-        for (Map.Entry<String, Double> entry : preciosVentormenta.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
+        // Se calculan los precios finales según la ciudad indicada
+        HashMap<String, Double> preciosFinales =
+                obtenerPreciosCiudad("Arcos", precios, ciudades);
+
+        // Se muestran los precios finales de cada objeto
+        for (String item : preciosFinales.keySet()) {
+            System.out.println(item + " -> " + preciosFinales.get(item));
         }
 
-
-
-        //Ejercicio 12
-
-        HashMap<String, HashMap<String, Boolean>> arbolHabilidades = new HashMap<>();
-
-        HashMap<String, Boolean> paladin = new HashMap<>();
-        paladin.put("Enfoque", true);
-        paladin.put("Golpe Divino", false);
-
-        arbolHabilidades.put("Paladín", paladin);
-
+        //EJERCICIO 12
         System.out.println("\nEJERCICIO 12");
-        desbloquearGolpeDivino(arbolHabilidades, "Paladín");
 
+        // Árbol de habilidades que guarda clases y sus habilidades
+        HashMap<String, HashMap<String, Boolean>> habilidades = new HashMap<>();
 
-        //Ejercicio 13
+        // Habilidades específicas del Paladín
+        HashMap<String, Boolean> paladin = new HashMap<>();
+        paladin.put("Enfoque", true);        // Habilidad inicial desbloqueada
+        paladin.put("Golpe Divino", false);  // Habilidad bloqueada al inicio
+        habilidades.put("Paladín", paladin);
 
-        HashMap<String, List<HashSet<String>>> historialRaids = new HashMap<>();
+        // Se intenta desbloquear la habilidad Golpe Divino
+        desbloquearGolpeDivino(habilidades, "Paladín");
 
-        HashSet<String> raid1 = new HashSet<>(Arrays.asList("Luca", "JUan", "Raquel"));
-        HashSet<String> raid2 = new HashSet<>(Arrays.asList("Marco", "Carlos"));
-        HashSet<String> raid3 = new HashSet<>(Arrays.asList("Leonardo", "Luis"));
-
-        historialRaids.put("Mazmorra Oscura",
-                new ArrayList<>(Arrays.asList(raid1, raid2, raid3)));
-
+        // EJERCICIO 13
         System.out.println("\nEJERCICIO 13");
-        mostrarEstadisticasRaids(historialRaids);
 
+        // Mapa que guarda las mazmorras con sus raids asociados
+        HashMap<String, List<HashSet<String>>> raids = new HashMap<>();
 
-        //Ejercicio 14
+        // Grupos de jugadores que participan en cada raid
+        HashSet<String> r1 = new HashSet<>(Arrays.asList("Raquel", "Pedro", "Mario"));
+        HashSet<String> r2 = new HashSet<>(Arrays.asList("Piedad", "Pepe"));
+        HashSet<String> r3 = new HashSet<>(Arrays.asList("Raquel", "Ana"));
+
+        // Se asocian los raids a la Mazmorra Verde
+        raids.put("Mazmorra Verde", new ArrayList<>(Arrays.asList(r1, r2, r3)));
+
+        // Se muestran las estadísticas de participación
+        mostrarEstadisticasRaids(raids);
+
+        // EJERCICIO 14
+        System.out.println("\nEJERCICIO 14");
+
+        // Mapa que almacena los mensajes enviados por cada jugador
         HashMap<String, List<String>> mensajes = new HashMap<>();
+        mensajes.put("raquel",
+                new ArrayList<>(Arrays.asList("Hola", "Vendo espada", "Vendo espada")));
+        mensajes.put("Pepe",
+                new ArrayList<>(Arrays.asList("Hola", "Busco grupo", "Gracias")));
 
-        mensajes.put("Ana", new ArrayList<>(Arrays.asList(
-                "Hola", "Vendo espada", "Vendo espada"
-        )));
+        // Se filtran los jugadores que hacen spam
+        System.out.println("Silenciados: " + filtrarSpam(mensajes));
 
-        mensajes.put("Luis", new ArrayList<>(Arrays.asList(
-                "Hola", "Busco grupo", "Gracias"
-        )));
-
-        System.out.println("\nEJERCICIO 14 ");
-        HashSet<String> silenciados = filtrarSpam(mensajes);
-        System.out.println("Jugadores silenciados: " + silenciados);
-
-        //Ejercicio15
-
-
+        // EJERCICIO 15
         System.out.println("\nEJERCICIO 15");
-        HashMap<String, PriorityQueue<Double>> subastas = new HashMap<>();
 
-        PriorityQueue<Double> pujasExcalibur =
-                new PriorityQueue<>(Collections.reverseOrder());
+        // Se crea la casa de subastas
+        Subastas casa = new Subastas();
 
-        pujasExcalibur.add(300.0);
-        pujasExcalibur.add(500.0);
-        pujasExcalibur.add(450.0);
+        // Registro de jugadores y su dinero inicial
+        casa.añadirJugador("raquel", 700);
+        casa.añadirJugador("Pepe", 500);
 
-        subastas.put("Excalibur", pujasExcalibur);
+        // Se añade un objeto a subastar
+        casa.añadirItem("Excalibur");
 
-        // Saldos de jugadores
-        HashMap<String, Double> saldos = new HashMap<>();
-        saldos.put("Piedad", 600.0);
-        saldos.put("Pedro", 400.0);
+        // Se registran las pujas de los jugadores
+        casa.añadirPuja("Excalibur", new Pujas("raquel", 450));
+        casa.añadirPuja("Excalibur", new Pujas("Pepe", 350));
+        casa.añadirPuja("Excalibur", new Pujas("raquel", 200));
 
-        procesarVenta("Excalibur", subastas, saldos, "Piedad");
+        // Se procesa la subasta y se asigna el objeto
+        casa.procesarVenta("Excalibur");
+
+        // Se muestran los saldos finales
+        casa.mostrarSaldos();
     }
 
-    // MÉTODOS EJERCICIO 11.
+    // FUNCIONES
 
+    // EJERCICIO 11: Cálculo de precios según la ciudad
     public static HashMap<String, Double> obtenerPreciosCiudad(
             String ciudad,
             HashMap<String, Double> preciosBase,
             HashMap<String, ArrayList<String>> ciudades) {
 
+        // Mapa donde se guardarán los precios calculados
         HashMap<String, Double> preciosFinales = new HashMap<>();
 
-        if (!ciudades.containsKey(ciudad)) {
-            return preciosFinales;
-        }
-
+        // Lista de objetos disponibles en la ciudad
         ArrayList<String> items = ciudades.get(ciudad);
+
+        // Se aplica un impuesto si la ciudad vende muchos objetos
         boolean impuestoLujo = items.size() > 5;
 
+        // Se calcula el precio final de cada objeto
         for (String item : items) {
             double precio = preciosBase.get(item);
             if (impuestoLujo) {
@@ -123,31 +130,33 @@ public class bloque3 {
         return preciosFinales;
     }
 
-    //MÉTODOS EJERCICIO 12.
-
+    // EJERCICIO 12: Desbloqueo de habilidades
     public static void desbloquearGolpeDivino(
             HashMap<String, HashMap<String, Boolean>> arbol,
             String clase) {
 
+        // Obtiene el conjunto de habilidades de la clase
         HashMap<String, Boolean> habilidades = arbol.get(clase);
 
-        if (!habilidades.getOrDefault("Enfoque", false)) {
-            System.out.println("Error: Debes desbloquear Enfoque primero.");
+        // Verifica si la habilidad previa está desbloqueada
+        if (!habilidades.get("Enfoque")) {
+            System.out.println("Error: primero debes desbloquear Enfoque.");
             return;
         }
 
+        // Desbloquea la nueva habilidad
         habilidades.put("Golpe Divino", true);
         System.out.println("Golpe Divino desbloqueado.");
     }
 
-    //MÉTODOS EJERCICIO 13.
-
+    // EJERCICIO 13: Estadísticas de raids
     public static void mostrarEstadisticasRaids(
             HashMap<String, List<HashSet<String>>> historial) {
 
+        // Mapa que cuenta cuántas veces participa cada jugador
         HashMap<String, Integer> contador = new HashMap<>();
 
-        // Contar participaciones
+        // Se recorren todas las mazmorras y sus raids
         for (List<HashSet<String>> raids : historial.values()) {
             for (HashSet<String> raid : raids) {
                 for (String jugador : raid) {
@@ -158,17 +167,18 @@ public class bloque3 {
         }
 
         System.out.println("Participaciones por jugador:");
-        for (Map.Entry<String, Integer> entry : contador.entrySet()) {
-            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        for (Map.Entry<String, Integer> e : contador.entrySet()) {
+            System.out.println(e.getKey() + " -> " + e.getValue());
         }
 
+        // Búsqueda del jugador con más participaciones
         String mvp = null;
         int max = 0;
 
-        for (Map.Entry<String, Integer> entry : contador.entrySet()) {
-            if (entry.getValue() > max) {
-                max = entry.getValue();
-                mvp = entry.getKey();
+        for (Map.Entry<String, Integer> e : contador.entrySet()) {
+            if (e.getValue() > max) {
+                max = e.getValue();
+                mvp = e.getKey();
             }
         }
 
@@ -176,68 +186,30 @@ public class bloque3 {
         System.out.println("Participaciones totales: " + max);
     }
 
-    //MÉTODOS EJERCICIO 14.
-
+    // EJERCICIO 14: Detección de spam
     public static HashSet<String> filtrarSpam(
             HashMap<String, List<String>> mensajes) {
 
+        // Conjunto donde se guardan los jugadores sancionados
         HashSet<String> silenciados = new HashSet<>();
 
-        for (Map.Entry<String, List<String>> entry : mensajes.entrySet()) {
+        // Revisión de los mensajes de cada jugador
+        for (String jugador : mensajes.keySet()) {
 
-            List<String> listaMensajes = entry.getValue();
+            List<String> lista = mensajes.get(jugador);
+            if (lista.size() < 3) continue;
 
-            if (listaMensajes.size() < 3) {
-                continue;
-            }
-
+            // Se toman los tres últimos mensajes enviados
             List<String> ultimosTres =
-                    listaMensajes.subList(
-                            listaMensajes.size() - 3,
-                            listaMensajes.size()
-                    );
+                    lista.subList(lista.size() - 3, lista.size());
 
+            // Si hay mensajes repetidos, se considera spam
             if (new HashSet<>(ultimosTres).size() < ultimosTres.size()) {
-                silenciados.add(entry.getKey());
-                listaMensajes.clear();
+                silenciados.add(jugador);
+                lista.clear();
             }
         }
 
         return silenciados;
-    }
-
-    //MÉTODOS EJERCICIO 15.
-
-    public static void procesarVenta(
-            String item, HashMap<String, PriorityQueue<Double>> subastas, HashMap<String, Double> saldos, String comprador) {
-
-        // Comprobar que el item existe
-        if (!subastas.containsKey(item)) {
-            System.out.println("El item no está en subasta.");
-            return;
-        }
-
-        PriorityQueue<Double> pujas = subastas.get(item);
-
-        // Mientras haya pujas disponibles
-        while (!pujas.isEmpty()) {
-
-            // Obtener la puja más alta
-            double mejorPuja = pujas.poll();
-            double saldo = saldos.getOrDefault(comprador, 0.0);
-
-            // Comprobar si el jugador tiene suficiente oro
-            if (saldo >= mejorPuja) {
-                // Venta exitosa
-                saldos.put(comprador, saldo - mejorPuja);
-                subastas.remove(item);
-
-                System.out.println(comprador + " gana " + item + " por " + mejorPuja);
-                return;
-            }
-        }
-
-        // Si ninguna fue válida
-        System.out.println("No hay pujas válidas para " + item);
     }
 }
