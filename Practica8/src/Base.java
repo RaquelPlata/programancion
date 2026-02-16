@@ -5,6 +5,7 @@ public class Base implements Diagnostico {
     private String estado;
     private String ubicacion;
 
+    //Constructor
     public Base(int idBase, String nombre, String estado, String ubicacion) {
         this.idBase = idBase;
         this.nombre = nombre;
@@ -12,6 +13,7 @@ public class Base implements Diagnostico {
         this.ubicacion = ubicacion;
     }
 
+    //Funciones
     public String buscarEquipo(String idEquipo) {
         return "Buscando equipo con ID: " + idEquipo;
     }

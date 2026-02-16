@@ -5,6 +5,7 @@ public class Biomas {
     private double temperatura;
     private double oxigeno;
 
+    //Constructor
     public Biomas(int idBioma, String nombre, double temperatura, double oxigeno) {
         this.idBioma = idBioma;
         this.nombre = nombre;
@@ -12,6 +13,7 @@ public class Biomas {
         this.oxigeno = oxigeno;
     }
 
+    //función
     public String agregarBioma() {
         return "Bioma agregado: " + nombre;
     }

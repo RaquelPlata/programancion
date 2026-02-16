@@ -7,6 +7,7 @@ public class Sensores extends Equipos {
     private double valorActual;
     private List<Double> historialDatos;
 
+    //Constructor
     public Sensores(String idEquipo, String modelo, String estado,
                     String tipo, String unidadMedida,
                     double valorActual, List<Double> historialDatos) {
@@ -17,6 +18,7 @@ public class Sensores extends Equipos {
         this.historialDatos = historialDatos;
     }
 
+    //Función
     public String obtenerUltimoValor() {
         return "Último valor: " + valorActual + " " + unidadMedida;
     }
