@@ -28,7 +28,7 @@ public class bloque3 {
 
         // Se muestran los precios finales de cada objeto
         for (String item : preciosFinales.keySet()) {
-            System.out.println(item + " -> " + preciosFinales.get(item));
+            System.out.println(item + " : " + preciosFinales.get(item));
         }
 
         //EJERCICIO 12
@@ -76,31 +76,7 @@ public class bloque3 {
         // Se filtran los jugadores que hacen spam
         System.out.println("Silenciados: " + filtrarSpam(mensajes));
 
-        // EJERCICIO 15
-        System.out.println("\nEJERCICIO 15");
-
-        // Se crea la casa de subastas
-        Subastas casa = new Subastas();
-
-        // Registro de jugadores y su dinero inicial
-        casa.añadirJugador("raquel", 700);
-        casa.añadirJugador("Pepe", 500);
-
-        // Se añade un objeto a subastar
-        casa.añadirItem("Excalibur");
-
-        // Se registran las pujas de los jugadores
-        casa.añadirPuja("Excalibur", new Pujas("raquel", 450));
-        casa.añadirPuja("Excalibur", new Pujas("Pepe", 350));
-        casa.añadirPuja("Excalibur", new Pujas("raquel", 200));
-
-        // Se procesa la subasta y se asigna el objeto
-        casa.procesarVenta("Excalibur");
-
-        // Se muestran los saldos finales
-        casa.mostrarSaldos();
     }
-
     // FUNCIONES
 
     // EJERCICIO 11: Cálculo de precios según la ciudad
