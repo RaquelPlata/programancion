@@ -1,0 +1,3 @@
+Cádiz;10000;Soleado;3
+Valencia;45000;Nublado;8
+Bilbao;1000;Nevado;15
