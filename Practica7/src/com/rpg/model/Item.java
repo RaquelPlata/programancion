@@ -1,12 +1,12 @@
 package com.rpg.model;
 
-public class item {
+public class Item {
     private String id;
     private String nombre;
     private String tipo;
     private Integer valor;
 
-    public item(String id, String nombre, String tipo, Integer valor) {
+    public Item(String id, String nombre, String tipo, Integer valor) {
         this.id = id;
         this.nombre=nombre;
         this.tipo=tipo;
