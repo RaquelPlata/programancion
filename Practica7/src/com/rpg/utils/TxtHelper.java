@@ -1,5 +1,8 @@
 package com.rpg.utils;
+
+import com.rpg.handler.FormatoInvalidoException;
 import com.rpg.model.ciudades;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,40 +11,41 @@ import java.util.List;
 
 public class TxtHelper {
 
-    public TxtHelper(){ }
+    public TxtHelper() { }
 
-    public static List<ciudades> leerciudades() {
-
-        List<ciudades> listaciudades = new ArrayList<>();
+    public static List<ciudades> leerciudades() throws FormatoInvalidoException {
+        List<ciudades> listaCiudades = new ArrayList<>();
 
         try {
-            List<String> lineas = Files.readAllLines(
-                    Paths.get("practica7/ficheros/ciudades.txt"));
+            List<String> lineas = Files.readAllLines(Paths.get("practica7/ficheros/ciudades.txt"));
 
             for (String linea : lineas) {
+                String[] datos = linea.split(";");
 
-                String[] s = linea.split(";");
+                if (datos.length != 4) {
+                    throw new FormatoInvalidoException("Formato incorrecto en la línea: " + linea);
+                }
 
                 ciudades c = new ciudades(
-                        s[0],
-                        Integer.parseInt(s[1]),
-                        s[2],
-                        Integer.parseInt(s[3])
+                        datos[0],
+                        Integer.parseInt(datos[1]),
+                        datos[2],
+                        Integer.parseInt(datos[3])
                 );
 
-                listaciudades.add(c);
+                listaCiudades.add(c);
             }
 
-            for (ciudades c : listaciudades) {
-                System.out.println(c.getNombre());
+            for (ciudades c : listaCiudades) {
+                System.out.println("Ciudad cargada: " + c.getNombre());
             }
 
+            return listaCiudades;
 
         } catch (IOException e) {
-            System.out.println("No ha podido abrise el archivo: " + e.getMessage());
-            return listaciudades;
+            throw new FormatoInvalidoException("No se pudo leer ciudades.txt: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            throw new FormatoInvalidoException("Número inválido en ciudades.txt: " + e.getMessage());
         }
-
-        return listaciudades;
     }
 }

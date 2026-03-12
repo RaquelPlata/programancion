@@ -7,34 +7,21 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class LoggerCustom {
-    private static String rutaarchivoLog = "practica7/ficheros/info.log";
 
-    public static  void registrarError(String mensaje){
+    private static String rutaArchivoLog = "practica7/ficheros/info.log";
+
+    public static void registrarError(String mensaje) {
 
         try {
-            FileWriter escritorArchivo = new FileWriter(rutaarchivoLog,true);
-            BufferedWriter bufferedWriter= new BufferedWriter(escritorArchivo);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(rutaArchivoLog, true));
             LocalDateTime fechaActual = LocalDateTime.now();
-            DateTimeFormatter formatofecha = DateTimeFormatter.ofPattern("yyyy-MM HH:mm:ss");
-            String fechaFormateada = fechaActual.format(formatofecha);
-
-            // Crear línea del log
-
-            String lineaLog = "[" + fechaFormateada + "] ERROR: " + mensaje;
-            bufferedWriter.write(lineaLog); // escribir en el archivo
-            bufferedWriter.newLine(); // salto de línea
-            bufferedWriter.close(); // cerrar writer
-
-
-
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            String linea = "[" + fechaActual.format(formato) + "] ERROR: " + mensaje;
+            bw.write(linea);
+            bw.newLine();
+            bw.close();
         } catch (IOException e) {
-
-            System.out.println("Error escribiendo en el log.");
-
+            System.out.println("No se pudo escribir en el log: " + e.getMessage());
         }
-
     }
-
 }
-
-

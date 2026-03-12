@@ -1,6 +1,5 @@
 import com.rpg.handler.RPGDataException;
 import com.rpg.services.GestionMundo;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +11,7 @@ public class Main {
 
         gestion.cargarTodo();
 
-        gestion.crearPersonaje(
-                "Mago",
-                "Enano",
-                150,
-                new ArrayList<>(List.of( "P01"))
+        gestion.crearPersonaje("Guerrero", "Humano", 100, new ArrayList<>(List.of( "W01"))
         );
 
     }
