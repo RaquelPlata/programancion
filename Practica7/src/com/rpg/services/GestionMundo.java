@@ -28,8 +28,11 @@ public class GestionMundo {
     }
 
     public void cargarTodo() throws FormatoInvalidoException {
+        System.out.println("Ciudades:");
         listaCiudades = TxtHelper.leerciudades();
+        System.out.println("Personaje:");
         personajes = JsonHelper.leerPersonaje();
+        System.out.println("Item:");
         listaItem = JsonHelper.leerItem();
 
         // Llenar el mapa de items
@@ -53,7 +56,7 @@ public class GestionMundo {
         p.setEquipo(equipo);
         personajes.add(p);
 
-        System.out.println("Personaje creado: " + nombre + " con " + equipo.size() + " items");
+        System.out.println("Personaje nuevo creado: " + nombre + " con " + equipo.size() + " items");
     }
 
     public HashMap<String, Item> getMapItems() {
