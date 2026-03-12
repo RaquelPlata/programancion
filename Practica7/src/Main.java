@@ -13,10 +13,10 @@ public class Main {
         gestion.cargarTodo();
 
         gestion.crearPersonaje(
-                "Aragorn",
-                "Humano",
-                20,
-                new ArrayList<>(List.of( "E01"))
+                "Mago",
+                "Enano",
+                150,
+                new ArrayList<>(List.of( "P01"))
         );
 
     }

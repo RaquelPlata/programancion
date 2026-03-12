@@ -15,24 +15,21 @@ public class JsonHelper {
     public JsonHelper(){}
     public static List<Item> leerItem() {
 
-        List<Item> listaItem = new ArrayList<>();
-
         try {
-            FileReader reader = new FileReader("practica7/ficheros/item.json");
+            FileReader reader = new FileReader("practica7/ficheros/Item.json");
             Gson g = new Gson();
             List<Item> lista = g.fromJson(reader, new TypeToken<List<Item>>() {}.getType());
 
             for (Item t : lista) {
                 System.out.println(t.getNombre());
             }
+            return lista;
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return listaItem;
+
     }
     public static List<personaje> leerPersonaje() {
-
-        List<personaje> listaPersonaje = new ArrayList<>();
 
         try {
             FileReader reader = new FileReader("practica7/ficheros/personaje.json");
@@ -42,10 +39,12 @@ public class JsonHelper {
             for (personaje p : lista) {
                 System.out.println(p.getNombre());
             }
+            return lista;
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return listaPersonaje;
+
     }
 }
 

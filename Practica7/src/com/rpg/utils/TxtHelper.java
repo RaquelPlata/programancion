@@ -16,7 +16,7 @@ public class TxtHelper {
 
         try {
             List<String> lineas = Files.readAllLines(
-                    Paths.get("practica7/ficheros/cuidades.txt"));
+                    Paths.get("practica7/ficheros/ciudades.txt"));
 
             for (String linea : lineas) {
 

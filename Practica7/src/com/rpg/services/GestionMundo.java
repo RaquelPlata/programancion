@@ -1,6 +1,9 @@
 package com.rpg.services;
 
 import com.rpg.handler.DatoInvalidoException;
+import com.rpg.handler.FormatoInvalidoException;
+import com.rpg.handler.RPGDataException;
+import com.rpg.handler.RecursoNoEncontradoException;
 import com.rpg.model.Item;
 import com.rpg.model.personaje;
 import com.rpg.model.ciudades;
@@ -26,9 +29,11 @@ public class GestionMundo {
     }
 
     public void cargarTodo() {
-
+        System.out.println("Las ciudades son:");
         listaCiudades = TxtHelper.leerciudades();
+        System.out.println("Las personaje son:");
         personajes = JsonHelper.leerPersonaje();
+        System.out.println("Las item son:");
         listaItem = JsonHelper.leerItem();
 
         for (Item i : listaItem) {
@@ -36,7 +41,7 @@ public class GestionMundo {
         }
     }
 
-    public void crearPersonaje(String nombre, String raza, Integer nivel, List<String> idItems) throws DatoInvalidoException {
+    public void crearPersonaje(String nombre, String raza, Integer nivel, List<String> idItems) throws DatoInvalidoException , RecursoNoEncontradoException, RPGDataException {
 
         List<Item> equipo = new ArrayList<>();
 
