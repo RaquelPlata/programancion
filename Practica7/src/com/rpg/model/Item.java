@@ -5,12 +5,16 @@ public class Item {
     private String nombre;
     private String tipo;
     private Integer valor;
+    public int peso;
+    private int fuerza;
 
-    public Item(String id, String nombre, String tipo, Integer valor) {
+    public Item(String id, String nombre, String tipo, Integer valor, int peso, int fuerza) {
         this.id = id;
-        this.nombre=nombre;
-        this.tipo=tipo;
-        this.valor=valor;
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.valor = valor;
+        this.peso = peso;
+        this.fuerza = fuerza;
     }
 
     //metodo set
@@ -49,5 +53,10 @@ public class Item {
     public Integer getValor() {
         return valor;
     }
+
+    public int getPeso() {
+        return peso;
+    }
 }
+
 

@@ -61,6 +61,7 @@ public class JsonHelper {
         try {
             Gson gson = new Gson();
             FileWriter writer = new FileWriter("practica7/ficheros/personaje.json"); // sobrescribe
+            //covierte la lista gson a Json para sobreescribirlo
             gson.toJson(personajes, writer);
             writer.close();
             System.out.println("Archivo personaje.json guardado correctamente.");

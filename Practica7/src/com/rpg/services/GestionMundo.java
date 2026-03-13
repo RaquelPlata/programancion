@@ -35,11 +35,34 @@ public class GestionMundo {
         System.out.println("Item:");
         listaItem = JsonHelper.leerItem();
 
+
         // Llenar el mapa de items
         for (Item i : listaItem) {
             mapItems.put(i.getId(), i);
         }
     }
+
+
+    public void crearvalidarCapacidad(String nombre, int fuerza,int peso) throws DatoInvalidoException {
+
+        int pesoTotal = 0;
+
+        // sumar el  peso de los items
+        for (Item item : listaItem) {
+            pesoTotal += item.getPeso();
+        }
+        int capacidad = fuerza * 5;
+
+
+        // comprobar si supera la capacidad
+        if (pesoTotal > capacidad) {
+
+            LoggerCustom.registrarError("Sobrecarga para " + nombre + " peso: " + pesoTotal +" capacidad: " + capacidad);
+
+            //throw new DatoInvalidoException("El personaje supera la capacidad de carga");
+        }
+    }
+
 
     public void crearPersonaje(String nombre, String raza, Integer nivel, List<String> idItems) throws DatoInvalidoException {
         List<Item> equipo = new ArrayList<>();
@@ -49,14 +72,16 @@ public class GestionMundo {
                 LoggerCustom.registrarError("Intento de usar item inexistente: " + id + " para " + nombre);
                 throw new DatoInvalidoException("El item no existe: " + id);
             }
-            equipo.add(mapItems.get(id));
         }
+
+
 
         personaje p = new personaje(nombre, raza, nivel);
         p.setEquipo(equipo);
         personajes.add(p);
 
         System.out.println("Personaje nuevo creado: " + nombre + " con " + equipo.size() + " items");
+
     }
 
     public HashMap<String, Item> getMapItems() {

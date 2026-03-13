@@ -8,11 +8,9 @@ public class Main {
     public static void main(String[] args) throws RPGDataException {
 
         GestionMundo gestion = new GestionMundo();
-
         gestion.cargarTodo();
-
-        gestion.crearPersonaje("Guerrero", "Humano", 100, new ArrayList<>(List.of( "W01"))
-        );
+        gestion.crearvalidarCapacidad("Aragorn",5,105);
+        gestion.crearPersonaje("Guerrero", "Humano", 100, new ArrayList<>(List.of( "W01")));
 
     }
 }

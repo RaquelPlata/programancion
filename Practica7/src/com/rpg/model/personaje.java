@@ -7,12 +7,18 @@ public class personaje {
     private String raza;
     private int nivel;
     private List<Item> equipo;
+    private int fuerza;
 
-    public personaje (String nombre , String raza , int nivel ){
-       this.nombre=nombre;
-       this.raza=raza;
-       this.nivel=nivel;
-       this.equipo=new ArrayList<>();
+    public personaje(String nombre, String raza, int nivel, int fuerza) {
+        this.nombre = nombre;
+        this.raza = raza;
+        this.nivel = nivel;
+        this.equipo = new ArrayList<>();
+        this.fuerza = fuerza;
+    }
+
+
+    public personaje(String nombre, String raza, Integer nivel) {
     }
     //metodo set
 
@@ -31,6 +37,13 @@ public class personaje {
     public void setEquipo(List<Item> equipo) {
         this.equipo = equipo;
     }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+
+
     //metodo get
 
     public String getNombre() {
@@ -48,4 +61,9 @@ public class personaje {
     public List<Item> getEquipo() {
         return equipo;
     }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
 }
