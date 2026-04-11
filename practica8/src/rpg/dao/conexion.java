@@ -12,7 +12,7 @@ public class conexion {
         try {
             return (conexion) DriverManager.getConnection(url, user, password);
         } catch (SQLException e) {
-            throw new SQLException("No se ha podido establecer conexion con la base de datos", e);
+            throw new SQLException("No se ha podido establecer conexion a la base de datos", e);
         }
     }
 
