@@ -33,7 +33,7 @@ public class Menu {
             this.razaDAO = new razaDAO();
             this.claseDAO = new clase_rpgDAO();
         } catch (SQLException e) {
-            System.out.println("❌ Error de base de datos al iniciar.");
+            System.out.println("Error de base de datos al iniciar.");
             this.ejecutar = false;
         }
     }
@@ -109,7 +109,7 @@ public class Menu {
             Integer id = personajeDAO.insertarPesonajeEnBD(nombre, 1, 100, 100, rSel, cSel, ciuIni);
             if (id != null) {
                 Log.Error("Creado personaje: " + nombre + " (ID: " + id + ")");
-                System.out.println("✅ Personaje creado con éxito.");
+                System.out.println("Personaje creado con éxito.");
             }
         } else if (opt == 2) {
             viajar();
@@ -133,7 +133,7 @@ public class Menu {
                 throw new NivelInsuficienteException("❌ Nivel insuficiente. Requieres nivel " + destino.getNivel_minimo_acceso());
             }
             personajeDAO.cambiarCiudadPersonaje(p, destino);
-            System.out.println("✅ ¡Viaje con éxito! " + p.getNombre() + " ahora está en " + destino.getNombre());
+            System.out.println("¡Viaje con éxito! " + p.getNombre() + " ahora está en " + destino.getNombre());
             Log.Error(p.getNombre() + " viajó a " + destino.getNombre());
         } catch (NivelInsuficienteException e) {
             System.err.println(e.getMessage());
@@ -158,7 +158,7 @@ public class Menu {
             }
             p.setOro(p.getOro() - seleccionado.getPrecio_oro());
             personajeDAO.actualizarOro(p); // Debes tener este método en el DAO
-            System.out.println("✅ Compra exitosa: " + seleccionado.getNombre());
+            System.out.println("Compra exitosa: " + seleccionado.getNombre());
             Log.Error("Compra realizada: " + p.getNombre() + " compró " + seleccionado.getNombre());
         } catch (FondosInsuficientesException e) {
             System.err.println("❌ " + e.getMessage());
@@ -168,7 +168,7 @@ public class Menu {
 
     // --- 3. EVENTOS (IMPUESTOS) ---
     private void eventoImpuestos() {
-        System.out.println("\n--- 🌍 COBRO DE IMPUESTOS ---");
+        System.out.println("\n---  COBRO DE IMPUESTOS ---");
         List<personaje> lista = personajeDAO.getPersonajes();
         Iterator<personaje> it = lista.iterator();
         while (it.hasNext()) {
@@ -200,7 +200,7 @@ public class Menu {
 
     // --- 5. ESTADÍSTICAS ---
     private void centroEstadisticas() {
-        System.out.println("\n--- 📊 ESTADÍSTICAS ---");
+        System.out.println("\n--- ESTADÍSTICAS ---");
         ArrayList<personaje> lista = new ArrayList<>(personajeDAO.getPersonajes());
         if (lista.isEmpty()) return;
 
