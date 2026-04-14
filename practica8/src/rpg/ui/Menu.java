@@ -130,7 +130,7 @@ public class Menu {
 
         try {
             if (p.getNivel() < destino.getNivel_minimo_acceso()) {
-                throw new NivelInsuficienteException("❌ Nivel insuficiente. Requieres nivel " + destino.getNivel_minimo_acceso());
+                throw new NivelInsuficienteException(" Nivel insuficiente. Requieres nivel " + destino.getNivel_minimo_acceso());
             }
             personajeDAO.cambiarCiudadPersonaje(p, destino);
             System.out.println(" ¡Viaje con éxito! " + p.getNombre() + " ahora está en " + destino.getNombre());
@@ -176,7 +176,7 @@ public class Menu {
             p.setOro(p.getOro() - 20);
             System.out.println(p.getNombre() + " ha pagado 20 de oro. Restante: " + p.getOro());
             if (p.getOro() < 0) {
-                System.out.println("💥 " + p.getNombre() + " ha sido desterrado por deudas.");
+                System.out.println("" + p.getNombre() + " ha sido desterrado por deudas.");
                 personajeDAO.desterrar(p); // Debes tener este método que ponga ciudad a NULL
                 it.remove();
                 Log.Error("Personaje desterrado: " + p.getNombre());
