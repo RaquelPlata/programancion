@@ -1,20 +1,47 @@
 package rpg.dao;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class conexion {
-    private static final String url ="jdbc:postgresql://localhost:5432/XRPG";
-    private static final String user = "xrpg_user";
-    private static final String password = "xrpg_password";
+    private static final String URL = "jdbc:postgresql://localhost:5432/XRPG";
+    private static final String USER = "xrpg_user";
+    private static final String PASSWORD = "xrpg_password";
+    private static Connection connection;
 
-    public static conexion getConexion() throws SQLException {
+    public conexion() throws SQLException {
         try {
-            return (conexion) DriverManager.getConnection(url, user, password);
+            this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
         } catch (SQLException e) {
-            throw new SQLException("No se ha podido establecer conexion a la base de datos", e);
+            throw new SQLException("Error de conexión: " + e.getMessage());
         }
     }
 
-}
+    public ResultSet consulta(String query) {
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeQuery(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
+    public static int executeUpdate(String query) {
+        try (Statement statement = connection.createStatement()) {
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+
+    public void closeConexion() {
+        try {
+            if (connection != null && !connection.isClosed()) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
